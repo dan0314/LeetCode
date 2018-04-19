@@ -11,18 +11,42 @@
  * @return {number[]}
  */
 
-var twoSum = function(nums, target) {
+var twoSum = function (nums, target) {
     var result = [],
         len = nums.length;
-    for(var i = 0; i < len; i++){
-        for(var k = i+1; k < len; k++){
-            if(nums[k] + nums[i] === target){
-                result.push(i,k);
+    for (var i = 0; i < len; i++) {
+        for (var k = i + 1; k < len; k++) {
+            if (nums[k] + nums[i] === target) {
+                result.push(i, k);
                 return result;
             }
         }
-    }    
+    }
 };
 
 
-//最普通的解决方式……    
+
+
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ * @author https://github.com/BakeItTillYouMakeIt/LeetCodeJS/blob/master/Javascript/001_twoSum.js
+ */
+var twoSum = function (nums, target) {
+
+    const hMap = {};
+
+    for (let i = 0; i < nums.length; i++) {
+        const curEle = nums[i];
+        const goal = target - curEle;
+
+        const tmp = hMap[goal];
+        if (tmp) {
+            return [tmp, i];
+        }
+
+        hMap[curEle] = i;
+    }
+};
