@@ -42,11 +42,11 @@ var twoSum = function (nums, target) {
         const curEle = nums[i];
         const goal = target - curEle;
 
-        const tmp = hMap[goal];
-        if (tmp) {
-            return [tmp, i];
+        if (goal in hMap) {
+            return [hMap[goal], i];
         }
 
         hMap[curEle] = i;
     }
 };
+
