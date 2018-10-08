@@ -59,3 +59,92 @@ const string1_3 = 'xiaos @#￥%……&*（）。.sFJKL';
 console.log(string1_3.match(regex1_3));     //null'
 console.log('\n');
 
+
+/**
+ * 量词的简写形式
+ * {m,} 【表示至少出现 m 次。】
+ * {m}  【等价于 {m,m}，表示出现 m 次。】
+ * ?    【等价于 {0,1}，表示出现或者不出现。】
+ * +    【等价于 {1,}，表示出现至少一次。】
+ * *    【等价于 {0,}，表示出现任意次，有可能不出现。】
+ */
+
+
+/**
+ * 贪婪匹配和惰性匹配
+ * 通过在量词后面加个问号就能实现惰性匹配
+ * {m,n}? {m,}? ?? +? *?
+ */
+console.log('贪婪匹配和惰性匹配');
+const regex1_4 = /\d{2,5}/g;          // 表示数字连续出现 2 到 5 次。会匹配 2 位、3 位、4 位、5 位连续数字。
+const string1_4 = '123 1234 12345 123456';
+console.log(string1_4.match(regex1_4));
+
+const regex1_5 = /\d{2,5}?/g;          //  2 到 5 次都行，当 2 个就够的时候，就不再往下尝试了。
+const string1_5 = '23 1234 12345 123456';
+console.log(string1_5.match(regex1_5));
+console.log('\n');
+
+
+/**
+ * 多选分支 |
+ */
+console.log('多选分支');
+const regex1_6 = /good|nice/g;
+const string1_6 = 'good idea, nice try.';
+console.log(string1_6.match(string1_6));
+// * 但有个事实我们应该注意，比如我用 /good|goodbye/，去匹配 "goodbye" 字符串时，结果是 "good": 而把正则改成 /goodbye|good/，结果是:
+console.log('\n');
+
+
+/**
+ * 匹配 16 进制颜色值
+ * 
+ * #ffbbad
+ * #Fc01DF
+ * #FFF
+ * #ffE
+ * 表示一个 16 进制字符，可以用字符组 [0-9a-fA-F]。
+ */
+console.log('匹配 16 进制颜色值');
+const regex1_7 = /#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})/g;
+const string1_7 = '#ffbbad #Fc01DF #FFF #ffE';
+console.log(string1_7.match(regex1_7));
+console.log('\n');
+
+
+/**
+ * 匹配时间
+ */
+console.log('匹配时间');
+const regex1_8 = /^([01][0-9]|[2][0-3]):[0-5][0-9]$/;     // 正则中使用了 ^ 和 $，分别表示字符串开头和结尾
+const string1_8_1 = '03:19';
+console.log(regex1_8.test(string1_8_1));
+// 如果也要求匹配 "7:9"，也就是说时分前面的 "0" 可以省略。
+const regex1_8_2 = /^(0?[0-9]|1[0-9]|[2][0-3]):(0?[0-9]|[1-5][0-9])$/;
+console.log(regex1_8_2.test('7:9'));
+console.log(regex1_8_2.test('02:07'));
+console.log('\n');
+
+
+/**
+ * window 操作系统文件路径
+ *   F:\study\javascript\regex\regular expression.pdf
+ *   F:\study\javascript\regex\
+ *   F:\study\javascript
+ *   F:\study\javascript
+ */
+
+ const regex1_9 = /^[a-zA-Z]:\\([^\\:*<>|"?\r\n/]+\\)*([^\\:*<>|"?\r\n/]+)?$/;
+ console.log(regex1_9.test('F:\\study\\javascript\\regex\\regular expression.pdf'));
+ console.log(regex1_9.test('F:\\study\\javascript\\regex\\'));
+
+
+
+
+
+
+
+
+
+
