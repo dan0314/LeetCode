@@ -135,16 +135,54 @@ console.log('\n');
  *   F:\study\javascript
  */
 
- const regex1_9 = /^[a-zA-Z]:\\([^\\:*<>|"?\r\n/]+\\)*([^\\:*<>|"?\r\n/]+)?$/;
- console.log(regex1_9.test('F:\\study\\javascript\\regex\\regular expression.pdf'));
- console.log(regex1_9.test('F:\\study\\javascript\\regex\\'));
+const regex1_9 = /^[a-zA-Z]:\\([^\\:*<>|"?\r\n/]+\\)*([^\\:*<>|"?\r\n/]+)?$/;
+console.log('window 操作系统文件路径');
+console.log(regex1_9.test('F:\\study\\javascript\\regex\\regular expression.pdf'));
+console.log(regex1_9.test('F:\\study\\javascript\\regex\\'));
+console.log(regex1_9.test('F:\\'));
+console.log('\n');
 
 
 
 
+/**
+ * 匹配id
+ * <div id="container" class="main"></div>
+ */
+
+console.log('匹配id');
+const regex1_10 = /".*?"/;
+const string1_10 = '<div id="container" class="main"></div>';
+console.log(string1_10.match(regex1_10)[0]);   // 效率较低
+const regex1_10_1 = /"[^]*?"/;
+console.log(string1_10.match(regex1_10_1)[0]);
+console.log('\n');
 
 
-
-
-
+/**
+ * 位置匹配
+ * ES5中共有六个锚
+ * ^ $ \b \B (?=p) (?!p)
+ * ^ (脱字符) 匹配开头 在多行匹配中匹配行开头
+ * $ (美元符号) 匹配结尾 在多行匹配中匹配行结尾
+ * \b 单词边界 具体就是\w \W 之间的位置 也包括\w 与^ 之间的位置 和\w 与$之间的位置
+ * (?=p) 其中p是一个子模式，即p前面的位置，或者说，该位置后面的字符要匹配p
+ *      比如(?=l) 表示l字符前面的字符
+ *      (?!p) 就是 (?=p)反面意思
+ */
+console.log('把字符串的开头和结尾用‘#’替换');
+console.log('hello'.replace(/^|$/g, '#'));
+console.log('\n');
+console.log('多行匹配模式');
+console.log('I\nlove\njavascript'.replace(/^|$/gm, '#'));
+console.log('\n');
+console.log('\\b');
+console.log('[JS] Lesson_01.mp4'.replace(/\b/g, '#'));
+console.log('\n');
+console.log('(?=p)');
+console.log('hello'.replace(/(?=l)/g, '#'));
+console.log('hello'.replace(/(?!l)/g, '#'));
+console.log('hello'.replace(/(?<=l)/g, '#'));
+console.log('hello'.replace(/(?<!l)/g, '#'));
+console.log('\n')
 
