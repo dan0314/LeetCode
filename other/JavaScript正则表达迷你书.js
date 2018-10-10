@@ -136,13 +136,37 @@ console.log('\n');
  */
 
 const regex1_9 = /^[a-zA-Z]:\\([^\\:*<>|"?\r\n/]+\\)*([^\\:*<>|"?\r\n/]+)?$/;
-console.log('window 操作系统文件路径');
+console.log('Windows 操作系统文件路径');
 console.log(regex1_9.test('F:\\study\\javascript\\regex\\regular expression.pdf'));
 console.log(regex1_9.test('F:\\study\\javascript\\regex\\'));
 console.log(regex1_9.test('F:\\'));
 console.log('\n');
 
+// 橙月NOTE: 我思考了一下，似乎用下面这种方式效率更高：
+const regex1_9_kj = /^[a-zA-Z]:\\([^\\:*<>|"?\r\n/]+\\?)*$/;
+console.log('Windows 操作系统文件路径');
+console.log(regex1_9_kj.test('F:\\study\\javascript\\regex\\regular expression.pdf'));
+console.log(regex1_9_kj.test('F:\\study\\javascript\\regex\\'));
+console.log(regex1_9_kj.test('F:\\'));
+console.log('\n');
 
+// 多次执行以下代码得到性能测试结果 (Chrome 69)：
+//
+// console.time()
+// for (let i=0; i<1000000;i++) {
+//   regex1_9.test('F:\\study\\javascript\\regex\\regular expression.pdf');
+// }
+// console.timeEnd()
+//
+// 小四版：
+// 第一次default: 168.02587890625ms
+// 第二次default: 172.12890625ms
+// 第三次default: 169.64013671875ms
+// ================
+// 橙月版：
+// 第一次default: 118.198974609375ms
+// 第二次default: 121.56884765625ms
+// 第三次default: 108.572021484375ms
 
 
 /**
