@@ -153,7 +153,7 @@ console.log('\n');
 console.log('匹配id');
 const regex1_10 = /".*?"/;
 const string1_10 = '<div id="container" class="main"></div>';
-console.log(string1_10.match(regex1_10)[0]);   // 效率较低
+console.log(string1_10.match(regex1_10)[0]);   // 据说这种效率低 但是浏览器测试一下感觉没啥区别
 const regex1_10_1 = /"[^]*?"/;
 console.log(string1_10.match(regex1_10_1)[0]);
 console.log('\n');
@@ -186,3 +186,13 @@ console.log('hello'.replace(/(?<=l)/g, '#'));
 console.log('hello'.replace(/(?<!l)/g, '#'));
 console.log('\n')
 
+
+/**
+ * 位置特性
+ * 'hello' == '' + 'h' + 'e' + 'l' + 'l' + 'o' + '';
+ * 也等价于 'hello' == '' + '' + 'hello';
+ */
+console.log('位置特性');
+console.log(/^^hello$$$/.test('hello'));
+console.log(/(?=he)^^he(?=\w)llo$\b\b$/.test('hello'));
+console.log('\n');
