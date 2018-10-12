@@ -196,3 +196,7 @@ console.log('位置特性');
 console.log(/^^hello$$$/.test('hello'));
 console.log(/(?=he)^^he(?=\w)llo$\b\b$/.test('hello'));
 console.log('\n');
+
+/**
+ * 数字千位分隔符表示法
+ */
