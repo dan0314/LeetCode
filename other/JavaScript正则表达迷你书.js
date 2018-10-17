@@ -213,3 +213,28 @@ function format(num) {
 }
 console.log(format(2004));
 console.log('\n');
+
+/**
+ * 验证密码问题
+ */
+console.log('验证密码问题');
+console.log('6-12位 数字 大小写字母 /^[0-9A-Za-z]{6,12}$/');
+console.log('6-12位 数字 大小写字母 必须包含数字  /(?=.*[0-9])^[0-9A-Za-z]{6,12}$/');
+console.log('6-12位 数字 大小写字母 同时包含数字和小写字母 /(?=.*[0-9])(?=.*[a-z])^[0-9A-Za-z]{6,12}$/');
+console.log('同时包含数字和小写字母 同时包含数字和大写字母 同时包含小写字母和大写字母 同时包含数字、小写字母和大写字母');
+const regex11 = /((?=.*[0-9])(?=.*[a-z])|(?=.*[0-9])(?=.*[A-Z])|(?=.*[a-z])(?=.*[A- Z]))^[0-9A-Za-z]{6,12}$/;
+console.log(regex11.test("1234567")); // false 全是数字
+console.log(regex11.test("abcdef")); // false 全是小写字母
+console.log(regex11.test("ABCDEFGH")); // false 全是大写字母 
+console.log(regex11.test("ab23C")); // false 不足6位 
+console.log(regex11.test("ABCDEF234")); // true 大写字母和数字 
+console.log(regex11.test("abcdEF234")); // true 三者都有
+console.log('另一种解法');
+const regex11_1 = /(?!^[0-9]{6,12}$)(?!^[a-z]{6,12}$)(?!^[A-Z]{6,12}$)^[0-9A-Za-z]{6,12}$/;
+console.log(regex11_1.test("1234567")); // false 全是数字
+console.log(regex11_1.test("abcdef")); // false 全是小写字母
+console.log(regex11_1.test("ABCDEFGH")); // false 全是大写字母 
+console.log(regex11_1.test("ab23C")); // false 不足6位 
+console.log(regex11_1.test("ABCDEF234")); // true 大写字母和数字 
+console.log(regex11_1.test("abcdEF234")); // true 三者都有
+
