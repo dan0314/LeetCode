@@ -200,3 +200,16 @@ console.log('\n');
 /**
  * 数字千位分隔符表示法
  */
+console.log('数字千位分隔符表示法');
+console.log('弄出最后一个逗号');
+console.log('12345678'.replace(/(?=\d{3}$)/g, ','));
+console.log('弄出所有的逗号');
+console.log('12345678'.replace(/(?!^)(?=(\d{3})+$)/g, ','));
+console.log('支持其他形式');
+console.log('12345678 123456789'.replace(/\B(?=(\d{3})+\b)/g, ','));
+console.log('格式化货币');
+function format(num) {
+    return num.toFixed(2).replace(/\B(?=(\d{3})+\b)/g, ',').replace(/^/, '$$ ');
+}
+console.log(format(2004));
+console.log('\n');
