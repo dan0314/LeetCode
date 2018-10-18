@@ -238,3 +238,4 @@ console.log(regex11_1.test("ab23C")); // false 不足6位
 console.log(regex11_1.test("ABCDEF234")); // true 大写字母和数字 
 console.log(regex11_1.test("abcdEF234")); // true 三者都有
 
+// -- qu TMD  学不动了
