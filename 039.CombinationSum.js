@@ -21,10 +21,5 @@ function combinationSumDFS(candidates, target, startIdx, curSum, curComb, sumCom
     return sumCombs;
 
 }
-// console.log(combinationSum([2, 3, 6, 7], 7));
-// console.log(combinationSum([2, 3, 5], 8));
-// console.log(combinationSum([1, 2], 3));
-console.log(combinationSum([1, 2], 4));
-
 
 // 最终还是参考了别的递归方式……
